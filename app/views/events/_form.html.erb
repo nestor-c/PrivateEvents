@@ -1,0 +1,6 @@
+<%=form_with model: @event, local: true do |f|%>
+    <%=f.label :description %><br/>
+    <%=f.text_area :description %><br/><br/>
+    <%=f.date_field :date %><br/><br/>
+    <%=f.button "Create" %><br/>
+<%end%>

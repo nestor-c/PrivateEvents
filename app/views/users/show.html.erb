@@ -1,0 +1,35 @@
+
+<p>
+    Here are your events:
+    <%if @user and !@user.events.empty?  %>
+        <%@user.events.each do |event|%>
+            <div>
+                <%=event.description%>, created by <%=@user.name%>
+            </div><br/>
+        <%end%>
+    <%else%>
+        <%if @user%>
+            <p> 
+                No events created so far. Get started, 
+                <%= link_to "create a new event!", new_event_path, class: "button" %><br/>
+            </p>
+        <%else%>
+                <p> 
+                Create an account or log in to start adding events.
+                </p><br/>
+        <%end%> 
+    <% end%>
+    <p>Events attended:</p>
+    <%if @user and !@user.attended_events.empty? %>
+            <%@user.attended_events.each do |event|%>
+                <div>
+                    <%=event.description%>, created by <%= event.creator.name%>
+                </div><br/>
+            <%end%>
+    <%else%>
+        <p> Get started, start attending events </p>
+    <%end%>
+
+
+
+</p>
