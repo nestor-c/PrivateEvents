@@ -1,6 +1,11 @@
-<%=form_with model: @event, local: true do |f|%>
-    <%=f.label :description %><br/>
-    <%=f.text_area :description %><br/><br/>
-    <%=f.date_field :date %><br/><br/>
-    <%=f.button "Create" %><br/>
-<%end%>
+    <div class="container has-text-centered">
+        <div class="field ">
+            <%=form_with model: @event, local: true do |f|%>
+                <%=f.label :description, class:"label" %><br/>
+                <%=f.text_area :description, class:"input" %><br/><br/>
+                <%=f.date_field :date, class:"input is-small"%><br/><br/>
+                <%=f.button "Create", class: "button"%><br/>
+            <%end%>
+        </div>
+    </div>
+    

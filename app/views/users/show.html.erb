@@ -1,35 +1,51 @@
-
-<p>
-    Here are your events:
-    <%if @user and !@user.events.empty?  %>
-        <%@user.events.each do |event|%>
-            <div>
-                <%=event.description%>, created by <%=@user.name%>
-            </div><br/>
-        <%end%>
-    <%else%>
-        <%if @user%>
-            <p> 
-                No events created so far. Get started, 
-                <%= link_to "create a new event!", new_event_path, class: "button" %><br/>
-            </p>
-        <%else%>
-                <p> 
-                Create an account or log in to start adding events.
-                </p><br/>
-        <%end%> 
-    <% end%>
-    <p>Events attended:</p>
-    <%if @user and !@user.attended_events.empty? %>
-            <%@user.attended_events.each do |event|%>
+<div class="container">
+    <div class="content">
+    <p>
+        Here are your events:
+        <%if @user and !@user.events.empty?  %>
+            <%@user.events.each do |event|%>
                 <div>
-                    <%=event.description%>, created by <%= event.creator.name%>
+                    <%=link_to event.description, event_path(event.id)%>,  created by <%=@user.name%>
                 </div><br/>
             <%end%>
-    <%else%>
-        <p> Get started, start attending events </p>
-    <%end%>
-
-
-
-</p>
+        <%else%>
+            <%if @user%>
+                <p> 
+                    No events created so far. Get started: <br/><br/>
+                    <%= link_to "create a new event!", new_event_path, class: "button" %><br/>
+                </p>
+            <%else%>
+                    <p> 
+                    Create an account or log in to start adding events.
+                    </p><br/>
+            <%end%> 
+        <% end%>
+        <p>Events attended:</p>
+        <%if @user and !@user.attended_events.empty? %>
+                <%@user.attended_events.each do |event|%>
+                    <div>
+                        <ol>
+                            <%if !@upcoming_events.empty?%>
+                                <h5>Upcoming Events:</h5>
+                                <% @upcoming_events.each do |old|%>
+                                    <li><%=old.description%></li>
+                                <%end%>
+                            <%end%>
+                            <%if !@past_events.empty?%>
+                                <h5> Past Events:</h5>
+                                <% @past_events.each do |new|%>
+                                    <li><%=new.description%></li>
+                                <%end%>
+                            <%end%>
+                        </ol>
+                    </div><br/>
+                <%end%>
+        <%else%>
+            <p> 
+                No new parties attended.
+                <%=link_to "home", root_path%>
+            </p>
+        <%end%>
+    </p>
+    </div>
+</div>

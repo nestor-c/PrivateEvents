@@ -1,21 +1,31 @@
-<%if @event %>
-    <p>
-        Description:<br/>
-        <%=@event.description%><br/><br/>
-        Date:<br/>
-        <%=@event.date%>
-        
-        <p> Attendees: </p>
-        <%if !@event.attendees.empty? %>
-            <ol>
-                <% @event.attendees.each do |attendee| %>
-                    <li><%=attendee.name%></li>
+<div class="container">
+    <div class="card">
+        <%if @event %>
+            <div class="card-content">
+            <p class="content">
+                Description:<br/>
+                <%=@event.description%><br/><br/>
+                Date:<br/>
+                <%=@event.date%>
+                
+                <p> Attendees: </p>
+                <%if !@event.attendees.empty? %>
+                    
+                        <% @event.attendees.each do |attendee| %>
+                            <%=attendee.name%>
+                        <%end%>
+                
+                <%else%>
+                    <p>No attendees yet.</p>
                 <%end%>
-            </ol>
+            </p>
+            </div>
         <%else%>
-            <p>No attendees yet.</p>
+            <div class="card-content">
+                <div class="content">
+                    <p>Event does not exist yet.</p>
+                </div>
+            </div>
         <%end%>
-    </p>
-<%else%>
-    <p>Event does not exist yet.</p>
-<%end%>
+    </div>
+</div>

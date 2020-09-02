@@ -1,6 +1,10 @@
-<h1>Log In</h1>
-<%= form_with url:sessions_path, local:true do |f|%>
-    <%=f.label :email%><br/>
-    <%=f.text_field :email%><br/><br/>
-    <%=f.button "Log In"%><br/>
-<%end%>
+<div class="container has-text-centered">
+    <div class="field ">
+        <h1 class="title">Log In</h1>
+        <%= form_with url:sessions_path, local:true, html: {autocomplete: "off"} do |f|%>
+            <%=f.label :email%><br/>
+            <%=f.text_field :email%><br/><br/>
+            <%=f.button "Log In", class:"button"%><br/>
+        <%end%>
+    </div>
+</div>

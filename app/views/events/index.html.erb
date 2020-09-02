@@ -1,2 +1,19 @@
-<h1> Private - Events </h1>
-<%= render 'events'%>
+<div class="container">
+    <div class="section">
+        <h1 class="title"> Events </h1>
+    <% if @events.empty? %>
+        <h1> Get started, create a new event. </h1>
+    <%else%>
+        <div class="section">
+            <div class="columns">
+                <div class="column">
+                    <%= render 'upcomingevents'%>
+                </div>
+                <div class="column">
+                    <%= render 'pastevents'%>   
+                </div>
+            </div>
+        </div>
+    <%end%>
+    </div>
+</div>

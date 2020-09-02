@@ -7,6 +7,8 @@ class UsersController < ApplicationController
     def show
         if current_user
             @user = current_user
+            @past_events = current_user.past_events
+            @upcoming_events = current_user.upcoming_events
         end
     end
 
@@ -28,5 +30,5 @@ class UsersController < ApplicationController
             params.require(:user).permit(:name, :email)
         end
 
-
+        
 end

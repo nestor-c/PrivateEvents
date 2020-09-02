@@ -1,0 +1,12 @@
+<h5 class="subtitle"> Past Events: </h5>
+     <%if @past_events.empty?%>
+        <p> No past events </p>
+    <%else%>
+        <% @past_events.each do |event|%>
+        <p>
+            <h3> 
+                <%=link_to "Event: #{event.description}, by #{event.creator.name}", event_path(event.id)%>
+            </h3>
+        </p><br/>
+        <%end%>
+    <%end%>
